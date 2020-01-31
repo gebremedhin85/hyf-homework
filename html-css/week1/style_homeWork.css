@@ -1,0 +1,137 @@
+*{
+    margin:0;
+    box-sizing:box-border;
+}
+/* body{
+    width: 80%;
+    align-self: auto;
+    margin-left: 10% rgb(0, 245, 245);
+    margin-right: 10% rgb(0, 245, 245);
+}*/
+main{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+h1,h2{
+    font-style: italic;
+    background-color: rgb(147, 147, 167);
+    font-size: 120%;
+}
+h2{
+    margin-bottom: 10px;
+}
+ 
+img{
+    border: 2px olive;
+}
+h1{
+    text-align: center;
+    padding-left:15px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    color: white;
+    background-color: rgb(10, 150, 100);
+}
+.personalInfo div p{
+    background-color: rgb(243, 236, 236);
+    font-size: 18px;
+}
+.personalInfo,.workExprience,.education{
+    padding-bottom: 15px;
+    margin-top: 15px;
+    background-color: rgb(243, 236, 236);
+}
+.personalInfo div.contactInfo{
+    float: left;
+    width: 60%;
+    height: 125px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.personalInfo a{
+    text-decoration: none;
+}
+.personalInfo .introducing{
+    clear:both;
+    font-size: 18px;
+    padding-top: -20px;
+}
+.workExprience div div ul li{
+    list-style: square;
+    font-size: 14px;
+}
+.workExprience a{
+    display: block;
+    text-decoration: none;
+    margin-left: 30px;
+}
+.proEngineer{
+    margin-top: 8px;
+}
+.cources ul li{
+    list-style: none;
+    display: inline;
+    font-size: 25px;
+    margin-left: 16%;
+    color: rgb(82, 138, 241);   
+}
+.cources ul li:first-child{
+    margin-left: 0%;
+}
+.webDevelop div{
+    margin-bottom: 15px rgb(96, 202, 188);
+    
+}
+.education .productionMsc li{
+    list-style:circle;
+}
+.productionMsc{
+    margin-top: 8px;
+}
+.education .industrialBsc{
+    clear: both;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+.languges{
+    background-color: rgb(210, 212, 206);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+h3{
+    background-color: lightsteelblue;
+    margin-bottom: 7px;
+}
+.reference{
+    background-color: rgb(229, 240, 236);
+    padding-top: 6px;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+.footering{
+    background-color: mediumseagreen;
+    height: 30px;
+    color: white;
+    padding-top: 10px;
+}
+.footering .phone{
+    float: left;
+    margin-left: 15%;
+    text-decoration: none;
+    font-size: 25px;
+    color: blue;
+    font-weight: bold;
+}
+.footering .email{
+    float: right;
+    text-decoration: none;
+    margin-right: 35%;
+    font-size: 25px;
+}
+.footering .inAicon{
+    float:right;
+    margin-right: 15%;
+    align-content: right;
+    font-size: 25px;
+}
+
