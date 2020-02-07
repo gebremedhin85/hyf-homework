@@ -1,0 +1,282 @@
+/*Style for elements in all parts */
+*{
+    margin:0;
+    box-sizing:box-content;
+}
+body{
+    font: 0.8em sans-serif;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+/* Styling for small screen divice(mobile) starts first and follows*/
+/* Styling for header part follows*/
+header{
+    background-color: rgb(252, 248, 252);
+}
+.header-title{
+    margin-left: 5%; 
+    margin-right: 5%;
+    padding-top: 2em;
+    margin-bottom: 1.5em;
+}
+.header-navigation{
+    background-color: white;
+    padding-top: .8em;
+    padding-bottom: .8em;
+}
+.header-navigation li{
+    font-weight: 600;
+    line-height: 1.5em;
+    margin-left: 5%;
+}
+.image-header{
+    height: 300px;
+    width: 100%;
+    background-color: white;
+}
+/* styling for main part below follows*/
+main{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+}
+.article-main h2{
+    margin-bottom: 0.8em;
+}
+section.article-main p{
+    margin-bottom: 1em;
+}
+.side-main h3{
+    margin-bottom: 1em;
+    margin-top: 1.5em;
+}
+/* styling for the galary(web logoes) below follows*/
+.the-gaLlry{
+    margin-top: 2em;
+}
+.the-gaLlry h3{
+    margin-bottom: 0.8em;
+}
+.the-gaLlry p{
+    margin-bottom: 2em;
+}
+.logotypes h3{
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+}
+.logotypes img{
+    display: block;
+    background-color:rgb(253, 253, 253);
+    margin: 1em;
+    width: 90px;
+}
+.logotypes .web-logoes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+/* styling for footer part below follows*/
+footer{
+    background-color: rgb(72, 46, 165);
+    margin-top: 1em;
+    padding-bottom: 2em;
+    color: white;
+}
+.footer-align{
+    margin-left: 5%;
+}
+footer a{
+    color: white;
+}
+.location h3{
+    margin-bottom: 0.7em;
+    padding-top: 2em;
+}
+.location p{
+  line-height: 2em;
+}
+.about-footer{
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    line-height: 2em;
+}
+.about-footer h3{
+    margin-bottom: 0.5em;
+}
+.archives{
+    margin-bottom: 1.5em;
+    line-height: 2em;   
+}
+.archives h3{
+    margin-bottom: 0.5em;
+}
+.archives a{
+    display: block;
+}
+.navigation-footer{
+    margin-bottom: 1.5em;
+    line-height: 2em;   
+}
+.navigation-footer h3{
+    margin-bottom: 0.5em;
+}
+.navigation-footer a{
+    display: block;
+}/* end of Styling for mobil-screens*/
+/* styling for large sized tablets screen starts below*/
+@media only screen and (min-width:809px) and (max-width:960px){
+    main,.header-title{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .footer-align{
+        margin-left: 5%;   
+    }
+    .header-navigation ul{
+        margin-left: 5%;
+    }
+    .header-navigation li{
+        margin-left: -5%;
+    }
+    .header-navigation{
+        height: 2em;
+    }
+    .header-navigation ul{
+        display: flex;
+        flex-grow: initial;
+        width: 25%;
+        flex-direction: row;
+        justify-content: center;
+        justify-content: space-between;
+    }
+    .image-header{
+        height: 400px;
+    }
+    main div.article{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    } 
+    .article-main h2{
+        margin-top: 1.2em;
+    }
+    .article-main{
+        margin-left: 8%;
+    }
+    .logotypes,.article-main{
+        width: 70%;
+        margin-left: 8%;
+    }
+    .side-main,.the-gaLlry{
+        width: 30%;
+    }
+    .logotypes img{
+        width: 90px;
+        margin: 1em;
+    }
+    div.galary{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;  
+    }
+    div.footer-align{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .about-footer,.location{
+        padding-top: 2em;
+    }
+    .archives,.navigation-footer{
+        padding-top: 2.8em;
+    }
+    .about-footer,.location,.archives,.navigation-footer{
+        width: 25%;
+    } /* end of Styling for tablets-screen*/
+}
+/* Styling for desktop screen and + sized divces follows*/
+@media only screen and (min-width:961px){
+    body{
+        max-width: 1040px;/* maximum screen width is fixed*/
+        margin:0 auto;
+    }
+    main,.header-title{
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .footer-align{
+        margin-left: 10%;  
+    }
+    .header-navigation ul{
+        margin-left: 10%;
+    }
+    .header-navigation li{
+        margin-left: -10%;
+    }
+    .header-navigation{
+        height: 2em;
+    }
+    .header-navigation ul{
+        display: flex;
+        flex-grow: initial;
+        width: 25%;
+        flex-direction: row;
+        justify-content: center;
+        justify-content: space-between;
+    }
+    .image-header{
+        height: 500px;
+    }
+    main div.article{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    } 
+    .article-main h2{
+        margin-top: 1.2em;
+    }
+    .logotypes,.article-main{
+        width: 70%;
+        margin-left: 8%;
+    }
+    .logotypes img{
+        width: 95px;
+        margin: 1em;
+    }
+    .side-main,.the-gaLlry{
+        width: 30%;
+    }
+    div.galary{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;  
+    }
+    div.footer-align{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .about-footer,.location{
+        padding-top: 2em;
+    }
+    .archives,.navigation-footer{
+        padding-top: 2.8em;
+    }
+    .about-footer,.location,.archives,.navigation-footer{
+        width: 30%;
+    }    
+}/* end of Styling */
+
+
