@@ -73,7 +73,7 @@ section.article-main p{
     display: block;
     background-color:rgb(253, 253, 253);
     margin: 1em;
-    width: 90px;
+    width: 110px;
 }
 .logotypes .web-logoes{
     display: flex;
@@ -128,7 +128,8 @@ footer a{
 }
 .navigation-footer a{
     display: block;
-}/* end of Styling for mobil-screens*/
+}
+/* end of Styling for mobil-screens*/
 /* styling for large sized tablets screen starts below*/
 @media only screen and (min-width:809px) and (max-width:960px){
     main,.header-title{
