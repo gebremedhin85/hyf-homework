@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Forms</title>
+        <link href='form-style.css' rel='stylesheet'/>
+    </head>
+    ​
+    <body>
+        <!--Header of Forms-->
+        <header><div class="head-nav"><span class="logo">Logo</span> 
+            <span class="navigation">Navigation</span></div>
+            <div class="form-nav"> <a href="form_part_one.html">Step 1/4</a><a href="form_part_two.html">Step 2/4</a><a href="form_part_three.html">Step 3/4</a><a href="form_part_four.html">Step 4/4</a></div>
+        </header>
+        <!--Form part one starts here-->
+        <form id="step-one" action="" class="form-one">                 
+            <div><h1>Sign up to yourcustomtailor.com</h1>
+            <p>We can't wait to help you improve your life-style and gain the attention
+                from people around you!
+            </p>
+            <p>Sign up below to save up to 70% on apparel, hand-bags and cosmetics. our agents are busy picking
+                the best offers that match your preferences and style. Every week we will send you a 
+                hand-picked selection - we just need to know a few details about your first...
+            </p>
+            <h2>Step 1/4 tell us who you are?</h2>
+            <h4>Progress </h4>
+            <progress  max="1" value="0.15"></progress>
+            <p>Nice to meet you. Let's spend a minute to get to know each other? Please enter the following:</p></div>
+            <div class="contact-info"> <div><label for="first-name">First name*</label>
+            <input type="text" id="last-name" required/></div>
+            
+            <div><label for="last-name">last Name*</label>
+            <input type="text" id="last-name" required/></div>
+            
+            <div><label for='country'>Country</label>
+            <select id="country" name="country">
+                <option value=“”></option>
+                <option value=“Denmark”>Denmark</option>
+                <option value=“Sweden">Sweden</option>
+                <option value=“UK”>UK</option>
+                <option value=“Norway">Norway</option>
+                <option value=“Germany”>Germany</option>
+                <option value=“France">France</option>
+                <option value=“Italy”>Italy</option>
+                <option value=“Finland">Finland</option>
+                <option value=“USA”>USA</option>
+                <option value=“Canada">Canada</option>
+                <option value=“Japan”>Japan</option>
+                <option value=“China">China</option>
+                <option value=“Koria”>Koria</option>
+                <option value=“Iceland">Iceland</option>
+                <option value=“India”>India</option>
+                <option value=“Ethiopia">Ethiopia</option>
+                <option value=“Holand”>Holand</option>
+            </select></div>
+            <div><label for="address">Street address*</label>
+            <input type="text" id="address" required/></div>
+            
+            <div><label for="post-code">Post code*</label>
+            <input type="text" id="post-code" minlength="4" maxlength="4" required/></div>
+        </div>
+            <p>Use the same address for billing and shipping? Uncheck below to fill out a separate shipping address.</p>
+            
+            <div class='address-shipping'>
+                <label class="address" for='shipping'><strong>shipping address</strong></label>
+                <input class="address" id='shipping' name='shipping-address' type='checkbox' value='yes' checked required/>
+                
+           <!--I make Form step 1/4 b of form part one -->
+           <!--for When billing adress is differnt from Shipping address-->
+        <div class="different-address" id="address-another"> <strong>Shopping address</strong>
+            <div class="contact-info"> <div><label for="first-name">First name*</label>
+                <input type="text" id="last-name" required/></div>
+                
+                <div><label for="last-name">last Name*</label>
+                <input type="text" id="last-name" required/></div>
+                
+                <div><label for='country'>Country</label>
+                <select id="country" name="country">
+                    <option value=“”></option>
+                    <option value=“Denmark”>Denmark</option>
+                    <option value=“Sweden">Sweden</option>
+                    <option value=“UK”>UK</option>
+                    <option value=“Norway">Norway</option>
+                    <option value=“Germany”>Germany</option>
+                    <option value=“France">France</option>
+                    <option value=“Italy”>Italy</option>
+                    <option value=“Finland">Finland</option>
+                    <option value=“USA”>USA</option>
+                    <option value=“Canada">Canada</option>
+                    <option value=“Japan”>Japan</option>
+                    <option value=“China">China</option>
+                    <option value=“Koria”>Koria</option>
+                    <option value=“Iceland">Iceland</option>
+                    <option value=“India”>India</option>
+                    <option value=“Ethiopia">Ethiopia</option>
+                    <option value=“Holand”>Holand</option>
+                </select></div>
+                <div><label for="address">Street address*</label>
+                <input type="text" id="address" required/></div>
+                
+                <div><label for="post-code">Post code*</label>
+                <input type="text" id="post-code" minlength="4" maxlength="4" required/></div></div>
+            
+                </div>
+                    </div>
+                    <div class='your-profile'>
+                        <span class="profile">Profile description</span>
+                        <label for='profile'></label>
+                        <textarea id='profile' name='profile-description' maxlength="500"></textarea>
+                        <span class='instructions'>please provide a short description of yourself to be displayed on our social comunity pages</span>
+                    </div>
+                    
+                    <div class="button-ancor"><a href="form_part_two.html">Next step</a></div>
+                </div>
+        </form>
+    </body>
+</html>
