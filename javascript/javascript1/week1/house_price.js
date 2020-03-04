@@ -1,12 +1,12 @@
 //A house price estimator
 // For Peter house
-const widthInMeters=8;
-const depthInMeters=10;
-const heightInMeters = 10;
-const gardenSizeInM2=100;
-const houseCosts=2500000;
-const volumeInMeters= widthInMeters*depthInMeters*heightInMeters;
-const housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300;
+let widthInMeters=8;
+let depthInMeters=10;
+let heightInMeters = 10;
+let gardenSizeInM2=100;
+let houseCosts=2500000;
+let volumeInMeters= widthInMeters*depthInMeters*heightInMeters;
+let housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300;
 if (housePrice > houseCosts){
     console.log("Peter is paying less");
 } if (housePrice < houseCosts) {
@@ -18,21 +18,18 @@ console.log("Peter should have paid: " + housePrice);
 
 //A house price estimator
 // For Julia house
-function comparePrice(){ //Here function used only for the purpose that the variables could be re-assigned again
-    const widthInMeters=5;
-    const depthInMeters=11;
-    const heightInMeters = 8;
-    const gardenSizeInM2=70;
-    const houseCosts=1000000;
-    const volumeInMeters= widthInMeters*depthInMeters*heightInMeters;
-    const housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300;
-    if (housePrice < houseCosts){
+    let widthInMetersTwo=5;
+    let depthInMetersTwo=11;
+    let heightInMetersTwo = 8;
+    let gardenSizeInM2Two=70;
+    let houseCostsTwo=1000000;
+    let volumeInMetersTwo= widthInMetersTwo*depthInMetersTwo*heightInMetersTwo;
+    let housePriceTwo = volumeInMetersTwo * 2.5 * 1000 + gardenSizeInM2Two * 300;
+    if (housePriceTwo < houseCostsTwo){
         console.log("Julia is paying too much");
-    } if(housePrice > houseCosts) {
+    } if(housePriceTwo > houseCostsTwo) {
         console.log("Julia is paying less");
-    } if(housePrice == houseCosts) {
+    } if(housePriceTwo == houseCostsTwo) {
         console.log("Julia is paying exact price");
     }
-    console.log("Julia should have paid: " + housePrice);
-}
-comparePrice();
+    console.log("Julia should have paid: " + housePriceTwo);
