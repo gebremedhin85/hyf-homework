@@ -1,11 +1,8 @@
 const activities=[];
 //Adding activities
-function addActivity(date, activity, duration){
-    if(typeof(date)==="string" && typeof(activity)==="string" && typeof(duration)==="number"){
-        const newActivity={};
-        newActivity.date=date;
-        newActivity.activity=activity;
-        newActivity.duration=duration;
+function addActivity(date_in, activity_in, duration_in){
+    if(typeof(date_in)==="string" && typeof(activity_in)==="string" && typeof(duration_in)==="number"){
+        const newActivity={date: date_in, activity: activity_in, duration: duration_in};
         activities.push(newActivity);
     }
 }

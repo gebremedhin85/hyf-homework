@@ -8,6 +8,8 @@ const travelInformation = {
     if(travelInformation.speed>0 && travelInformation.destinationDistance>=0){
        
         return Math.floor(travelInformation.destinationDistance*60/travelInformation.speed);//calculates travel time in munites
+      }else if(travelInformation.speed<=0 || travelInformation.destinationDistance<0){
+        return "Wrong data entry"
       }
   }
   

@@ -25,23 +25,26 @@ const seriesDurations = [
       hours: 11,
       minutes:0,
   };
-  seriesDurations.push(myFavoriteSeries);// my favorite series added
-   
- 
-  // calculating: for each series time spent percentage of an average lifespan of 80 years
-  const lifespanInHours=700800;//All are in days and hours so all durations are calculated in to hours
+seriesDurations.push(myFavoriteSeries);// my favorite series added
   
-  console.log(seriesDurations[0].title+" took "+((seriesDurations[0].days*24+seriesDurations[0].hours)
-      *100/lifespanInHours).toFixed(2)+"%"+" of my life");
-  for(let i=1; i<seriesDurations.length; i++){
-      console.log(seriesDurations[i].title+" took "+((seriesDurations[i].days*24+seriesDurations[i].hours)
-      *100/lifespanInHours).toFixed(3)+"%"+" of my life");
-  }
-  // for total serieses
-  let totalSeries=0;
-  for(let n=0; n<seriesDurations.length; n++){
-      totalSeries+=(seriesDurations[n].days*24+seriesDurations[n].hours)
-      *100/lifespanInHours;
-       }
-    totalSeries.toFixed(2);
-    console.log("In total that is "+totalSeries.toFixed(2)+"%"+" of my life")
+  //avarge life spane taken as 80 years
+const lifespanInMinutes=42048000;//All durations are calculated in to minutes
+//to calculate totatl duration in minutes per each series
+function getTotalMinutesPerSeries(seriesDurations){
+    const totalMinutesPerSeries=seriesDurations.days*24*60+seriesDurations.hours*60+seriesDurations.minutes;
+    return totalMinutesPerSeries;
+}
+//to calculate percentage of life spane wasted on single series 
+function getPercentageOfLifeSpanePerSeries(MinutesPerSeries, lifespanInMinutes){
+    const percentageOfLifeSpanePerSeries=(MinutesPerSeries/lifespanInMinutes)*100;
+    return percentageOfLifeSpanePerSeries;
+}
+let totalSeriesPercentage=0;
+//for loop to calculte the total serieses percentage of duration
+for(let i=0; i<seriesDurations.length; i++){
+  percentage=getPercentageOfLifeSpanePerSeries(getTotalMinutesPerSeries(seriesDurations[i]), lifespanInMinutes);
+  totalSeriesPercentage+=percentage;
+  console.log(seriesDurations[i].title+" took "+percentage.toFixed(3)+"%"+" of my life");
+}
+console.log("In total that is "+totalSeriesPercentage.toFixed(2)+"%"+" of my life");
+ 

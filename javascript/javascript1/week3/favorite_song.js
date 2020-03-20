@@ -45,12 +45,8 @@ console.log(searchedSong2);// undefined
 
 //Create our own playlist
 function addSongToMyPlaylist(title){
-        for(let i=0; i<songDatabase.length; i++){
-        
-            if(songDatabase[i].title===title){
-                myPlaylist.push(songDatabase[i]);
-            }
-        }  
+  myPlaylist.push(getSongByTitle(title));
+   
 }
 addSongToMyPlaylist('3 nails in wood');
 addSongToMyPlaylist("Baby");
