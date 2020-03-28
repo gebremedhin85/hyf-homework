@@ -1,26 +1,44 @@
  //Character frequency counter
 
  
- function getCharacterFrequencies(word, char){
+ function getCharacterFrequencies(word) {
+    const charSplit = word.split('');
+     
+    const objectChar = {};
+     
+    for (let i = 0; i < charSplit.length; i++) {
+        const char = charSplit[i];
+        if (!objectChar[char]) {
+            objectChar[char] = 1;
+        }
+        else {
+            objectChar[char]++;
+        }
+    }
+    return objectChar;
+}
+const characterFrequency = getCharacterFrequencies('characters');
+
+function splitCharacterFrequencies(characterFrequency) {
+    const characterArr = [];
+    let lengthArr = 0;
     
-    let count=0;
+    for (const property in characterFrequency) {
+        
+        lengthArr += characterFrequency[property];
+
+        characterArr.push({
+            character: property,
+            count: characterFrequency[property],
+        });
+    }
+    const printObject = { characters: characterArr,
+        length: lengthArr,}
+    return printObject;
+}
  
-    characters=[{character:"", count:0}];
-     if(typeof(word)==="string"){
-       
-         for(let i=0; i<word.length; i++){
-              
-              if(word[i]===char){
-                
-                 count +=1;
-                  
-               }    
-         }   
-     } 
-    
-     return count; 
- }
- console.log(getCharacterFrequencies("ababacedae", 'a'));
+console.log(splitCharacterFrequencies(characterFrequency));
+ 
   
  
  

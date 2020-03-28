@@ -11,39 +11,76 @@ function getRenderedGame(position){
     }
 // console with example
     const position=[
-        ['x', 'o', ' '],
-        [' ', 'o', ' '],
-        [' ', 'o', 'x']
+        ['o', ' ', 'x'],
+        ['o', ' ', 'x'],
+        [' ', ' ', 'x']
     ];
 console.log(getRenderedGame(position));
  
 
 //Determining a winner
 function getGameinfo(position){
+    
     const gameInfo={};
-    for(let i=0; i<position.length; i++){
-        for(let j=0; j<position[i].length; j++){
-            if((position[0][0]==="x" && position[1][0]==="x" && position[2][0]==="x") ||
-             (position[0][1]==="x" && position[1][1]==="x" && position[2][1]==="x") ||
-             (position[0][2]==="x" && position[1][2]==="x" && position[2][2]==="x") ||
-            (position[0][0]==="x" && position[1][1]==="x" && position[2][2]==="x")){
-                gameInfo.winner="x";
-                gameInfo.loser="o";
-                gameInfo.hasEnded=true;
-            }else if((position[0][0]==="o" && position[1][0]==="o" && position[2][0]==="o") ||
-            (position[0][1]==="o" && position[1][1]==="o" && position[2][1]==="o") ||
-            (position[0][2]==="o" && position[1][2]==="o" && position[2][2]==="o") ||
-           (position[0][0]==="o" && position[1][1]==="o" && position[2][2]==="o")){
-                gameInfo.winner="o";
-                gameInfo.loser="x";
-                gameInfo.hasEnded=true;
-            }else{
-                gameInfo.winner=undefined;
-                gameInfo.loser=undefined;
-                gameInfo.hasEnded=false;
-            }
+
+    function getGameResult(position, player){
+    
+        if(position[0][0]===player && position[1][0]===player && position[2][0]===player){
+            return true;
+        }
+        else if(position[0][1]===player && position[1][1]===player && position[2][1]===player){
+            return true;
+        }
+        else if(position[0][2]===player && position[1][2]===player && position[2][2]===player){
+            return true;
+        }
+        else if(position[0][0]===player && position[1][1]===player && position[2][2]===player){
+            return true;
+        }
+        else if(position[0][0]===player && position[0][1]===player && position[0][2]===player){
+            return true;
+        }
+        else if(position[1][0]===player && position[1][1]===player && position[1][2]===player){
+            return true;
+        }
+        else if(position[2][0]===player && position[2][1]===player && position[2][2]===player){
+            return true;
+         
+        }else{
+            return false
         }
     }
-    return  gameInfo;
-}
-console.log(getGameinfo(position));
+
+     if(getGameResult(position, 'x')){
+        gameInfo.winner="x";
+        gameInfo.loser="o";
+
+        gameInfo.hasEnded=true;
+        gameInfo.nextPlayer= false;
+    }
+    else if(getGameResult(position, 'o')){
+        gameInfo.winner="o";
+        gameInfo.loser="x";
+
+        gameInfo.hasEnded=true;
+        gameInfo.nextPlayer= false;
+         }
+     else{ 
+        gameInfo.winner=undefined;
+        gameInfo.loser=undefined;
+        
+        gameInfo.hasEnded=false;
+        gameInfo.nextPlayer= "x";
+     } 
+
+     return gameInfo;
+    }
+    
+
+console.log(getGameinfo(position))
+
+
+  
+
+ 
+ 
