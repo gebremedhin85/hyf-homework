@@ -142,9 +142,7 @@ const  arrayOfFunctions = [
       functionTwo = function() { console.log('This is function expression two') },
       functionThree =function() { console.log('This is function expression three') }
     ]
-    arrayOfFunctions.forEach(function(fun){
-        fun();
-    })
+    arrayOfFunctions.forEach(fun=>fun())
 
 
     //Create an object of key values are functions

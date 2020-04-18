@@ -1,6 +1,6 @@
 //let timeInSecond=0;
 const inputTag=document.getElementById("inputValue");
-
+document.getElementById("buttonStart").enabled = false;
 
 const getTimeInSecond=function(){
     
@@ -11,7 +11,9 @@ const getTimeInSecond=function(){
     let timeOut=true;
 
     const getWinner=function(){
-       if(timeOut){
+
+       if(timeOut && !document.getElementById("buttonStart").enabled){
+        //document.getElementById("buttonStart").enabled = true;
             if (event.key === 's' || event.key==='S') {//when char s is pressed
                 
                 counterS++;//counting for s press increment
@@ -24,12 +26,13 @@ const getTimeInSecond=function(){
             } 
         }  
     } 
+
+     
     //setting event-listener for key press
     document.addEventListener('keydown', getWinner);
         
-
+    //setting duration of the game in second
     setTimeout(() => {
-        
         
         if(counterS > counterL){
             document.getElementById("winnerS").innerHTML='The Winner!!';  
@@ -37,16 +40,17 @@ const getTimeInSecond=function(){
         else if(counterS < counterL){
             document.getElementById('winnerL').innerHTML='The Winner!!';  
         }
-        else if(counterS ==0 && counterL==0){ 
-                document.getElementById('winnerS').innerHTML='Game not played';
-                document.getElementById('winnerL').innerHTML='Game not played'; 
-                    
-        }else if(counterS == counterL){ 
+       else if((counterS >0) && (counterL>0) && (counterS===counterL)){ 
             document.getElementById('winnerS').innerHTML='It was draw';
             document.getElementById('winnerL').innerHTML='It was draw'; 
                 
-    }
+        }else if(counterS ===0 && counterL===0){ 
+            document.getElementById('winnerS').innerHTML='Game not played';
+            document.getElementById('winnerL').innerHTML='Game not played'; 
+        }
+         
          timeOut=false; //to stop the game after timer is over  
+         document.getElementById("buttonStart").enabled = true;
          
         
     }, timeInSecond*1000);
