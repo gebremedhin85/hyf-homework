@@ -1,0 +1,59 @@
+body{
+   text-align: center;
+   max-width: 500px;
+}
+h2{
+    font-style: italic;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom : 30px;
+}
+input{
+    padding: 5px;
+}
+.input{
+    margin-top:30px; 
+    margin-bottom: 30px;
+}
+button{
+    font-weight: 600;
+padding: 15px 25px;
+background-color: rgb(118, 118, 212);
+}
+.button{
+    margin: 30px;
+}
+div.countS p, div.countL p{
+    font-size: 80%;
+}
+div.countS p:nth-child(2), div.countL p:nth-child(2){
+    font-size: 100%;
+    color: rgba(255, 0, 0, 0.795);
+}
+div.counter{
+   
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    border-top:solid rgb(184, 178, 178) 1px;
+    justify-content:center;
+}
+div.countL{
+    padding-top: 50px;
+    text-align: center;
+    padding-left: 20%;
+    padding-bottom: 30px;
+    
+}
+div.countS{
+    text-align: center;
+    border-right: solid rgb(184, 178, 178)  1px;
+    padding-right: 20%;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+.restar button{
+font-weight: 600;
+margin-top: 30px;
+padding: 15px 25px;
+background-color: rgb(119, 243, 119);
+}
