@@ -1,0 +1,47 @@
+ 
+h2{
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+.search{
+    display: block;
+    padding: 10px;
+    
+    margin-bottom: 30px;
+    color: rgb(78, 76, 76);
+    background-color: rgb(250, 249, 249);
+    font-size: 120%;
+    
+}
+.button{
+    display: block;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: rgb(250, 249, 249);
+    background-color: rgb(54, 201, 115);
+    font-size: 120%;  
+    border-radius: 3px;
+     
+    margin-left: 40px; 
+}
+.number{
+    display: block;
+    padding: 10px;   
+    margin-bottom: 20px;
+    color: rgb(78, 76, 76);
+    background-color: rgb(250, 249, 249);
+    font-size: 120%;
+}
+.search:focus, .number:focus{
+    border-color:rgb(238, 77, 77);
+}
+div.divClass ul li{
+list-style: none;
+ 
+}
+div.divClass img{
+    margin-bottom: 20px;
+    border: solid 10px rgb(245, 240, 242);
+    
+}
