@@ -4,28 +4,23 @@ const url='https://gist.githubusercontent.com/pankaj28843/08f397fcea7c760a99206b
  
 fetch(url)
 
-.then(res=>res.json())
-.then(result => {
-    const movies=result;
-     
-    
-    //All bad movies
-    const badMovies= movies.filter(movie=>{ // using filter
+    .then(res=>res.json())
 
-        if(movie.rating<4)//assume bad movies are rating les than 4
-    
-        return movie;
-    });
-    console.log(badMovies);//array of 88 movies
-
-    //Creat an array of bad movies since year 2000
-    const badRecentMovies=badMovies.filter(movie=>{
-        if(movie.year>=2000)
-            return movie;
+    .then(movies => {
+            
         
-    })
-    console.log(badRecentMovies);//array of 67 movies
-});
+        //All bad movies, assuming that rating less than 4 is bad movie
+        const badMovies= movies.filter(movie=> movie.rating < 4)
+
+        //results array of 88 movies
+        console.log(badMovies); 
+
+        //Creat an array of bad movies since year 2000
+        const badRecentMovies=badMovies.filter(movie=>movie.year>=2000)
+        
+        //results array of 67 movies
+        console.log(badRecentMovies);
+    });
 
 
  
