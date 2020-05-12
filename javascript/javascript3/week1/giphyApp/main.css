@@ -36,12 +36,15 @@ h2{
 .search:focus, .number:focus{
     border-color:rgb(238, 77, 77);
 }
-div.divClass ul li{
+div.div-gifs ul li{
 list-style: none;
  
 }
-div.divClass img{
+div.div-gifs img{
     margin-bottom: 20px;
     border: solid 10px rgb(245, 240, 242);
+    display:block;
+    widows: 250px;;
+    height: 150px;
     
 }
