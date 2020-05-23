@@ -1,171 +1,131 @@
-
 //Shopping cart using Classes
- 
+
 //class product
 
 class Product {
+	constructor(name, price) {
+		this.name = name;
 
-    constructor(name, price) {
+		this.price = price;
+	}
 
-        this.name = name;
+	// method to convert currency
+	convertToCurrency(currency) {
+		if (
+			currency.toLowerCase() === "dollars" ||
+			currency.toLowerCase() === "dollar"
+		)
+			return this.price / 6.75;
 
-        this.price = price;
+		if (currency.toLowerCase() === "pound") return this.price / 8;
 
-    }
-
-    
-    // method to convert currency
-    convertToCurrency(currency){
-
-        if(currency.toLowerCase()==='dollars' ||currency.toLowerCase()==='dollar')
-
-            return this.price/6.75;
-
-        if(currency.toLowerCase()==='pound')
-
-            return this.price/8;
-
-        if(currency.toLowerCase()==='euro')
-
-            return this.price/7.5;
-
-    }
+		if (currency.toLowerCase() === "euro") return this.price / 7.5;
+	}
 }
-
-
 
 //class shopping cart starts
 
 class ShoppingCart {
+	constructor() {
+		this.products = [];
+	}
 
-    constructor() {
+	//method for adding product to shopping cart
 
-        this.products = [];
+	addProduct(product) {
+		this.products.push(product);
+	}
 
-    }
-    
+	//method for removing product fro sh.cart
+	removeProduct(product) {
+		const productList = this.products.filter((formerProducts) => {
+			return formerProducts.name !== product.name;
+		});
 
-    //method for adding product to shopping cart
-    
-    addProduct(product) {
+		this.products = productList;
+	}
 
-        this.products.push(product);
-         
-    }
+	//method for searching product in shopping cart
+	searchProduct(productName) {
+		let searchOutput = [];
 
-    //method for removing product fro sh.cart
-    removeProduct(product) {
+		this.products.forEach((product) => {
+			if (productName.toLowerCase() === product.name)
+				searchOutput.push(product);
+		});
 
-        const productList=this.products.filter(formerProducts=>{
+		return searchOutput;
+	}
 
-            return formerProducts.name !== product.name
-        })
+	//method for calculating total price of products in shoping cart
 
-       this.products= productList;
-    }
+	getTotal() {
+		let totalPrice = 0;
 
+		this.products.forEach((product) => {
+			totalPrice += product.price;
+		});
 
-    //method for searching product in shopping cart
-    searchProduct(productName) {
-        
-        let  searchOutput =[];         
-        
-        this.products.forEach(product=>{
+		return totalPrice;
+	}
 
-            
-            if(productName.toLowerCase() === product.name)
+	//method for rendering to browser
 
-                searchOutput.push(product);
+	async renderProducts() {
+		const div = document.createElement("div");
 
-                
-        })
-          
-       return searchOutput;
-    }
+		this.products.forEach((product) => {
+			const p = document.createElement("p");
 
-   
-    //method for calculating total price of products in shoping cart
-    
-    getTotal() {
-       
-         let totalPrice=0;
+			p.innerText = "This " + product.name + " costs " + product.price + " kr ";
 
-         this.products.forEach(product=>{
-             
-            totalPrice+=product.price;
-          
-        })
+			div.appendChild(p);
+		});
 
-         return totalPrice;
-         
-    }
+		const pTotalCost = document.createElement("p");
 
+		const totalCost = this.getTotal();
 
-    //method for rendering to browser
-    
-    renderProducts() {
-        
-        const div=document.createElement('div'); 
+		pTotalCost.innerHTML = `Total price: ${totalCost}`;
 
-        this.products.forEach(product=>{
+		div.appendChild(pTotalCost);
 
-            const p=document.createElement('p');
+		const name = await this.getUser();
 
-            p.innerText= 'This '+product.name +' costs '+ product.price+ ' kr ';
+		const pUser = document.createElement("p");
 
-            div.appendChild(p);
+		pUser.innerHTML = `User name: ${name}`;
 
-             
-        })
+		div.appendChild(pUser);
 
-        return div;
-            
-       }
+		const body = document.querySelector("body");
 
-   
-    
-    getUser() {
-        
-       const url='https://jsonplaceholder.typicode.com/users/1';
+		body.appendChild(div);
+	}
 
-       fetch(url)
+	getUser() {
+		return fetch("https://jsonplaceholder.typicode.com/users/1")
+			.then((res) => res.json())
 
-        .then(res=>res.json())
-
-        .then(users=>{
-
-            return new Promise((resolve)=>{
-
-                resolve(users);
-
-            });
-
-        }).then(user=>{
-
-            console.log(user)
-            
-            const p=document.createElement('p');
-            
-            p.innerHTML=`User name: ${user.name} `;
-           
-            document.querySelector('body').appendChild(p);
-        })
-    }
+			.then((users) => {
+				return users.name;
+			});
+	}
 }
 
 //instant Shopping cart
 const shoppingCart = new ShoppingCart();
 
 //instant products class
-const flatscreen = new Product('flat-screen', 5000);
+const flatscreen = new Product("flat-screen", 5000);
 
-const car = new Product('car', 200000);
+const car = new Product("car", 200000);
 
-const usedComputer = new Product('computer', 5000);
+const usedComputer = new Product("computer", 5000);
 
-const mobile = new Product('mobile', 8000);
+const mobile = new Product("mobile", 8000);
 
-const computer = new Product('computer', 10000);
+const computer = new Product("computer", 10000);
 
 //adding product to cart
 shoppingCart.addProduct(flatscreen);
@@ -181,35 +141,23 @@ shoppingCart.addProduct(usedComputer);
 //removing a product
 shoppingCart.removeProduct(flatscreen);
 
- //total price
+//total price
 console.log(shoppingCart.getTotal());
 
 console.log(shoppingCart.products);
 
 //searching a product
-console.log(shoppingCart.searchProduct('computer'))
+console.log(shoppingCart.searchProduct("computer"));
 
-console.log(shoppingCart.searchProduct('Car'))
+console.log(shoppingCart.searchProduct("Car"));
 
-
-//rendering product name and its price
-const body=document.querySelector('body');
-
-const renderOutput=shoppingCart.renderProducts();
-
-body.appendChild(renderOutput);
-
-const p=document.createElement('p');
-
-p.innerHTML='Total price: '+shoppingCart.getTotal();
- 
-body.appendChild(p);
+//rendering product name and its price and user
+shoppingCart.renderProducts();
 
 //getting users
 shoppingCart.getUser();
 
-
 //To convert currency
-const plant = new Product('plant', 50);
+const plant = new Product("plant", 50);
 
-console.log(plant.convertToCurrency('Euro'))
+console.log(plant.convertToCurrency("Euro"));

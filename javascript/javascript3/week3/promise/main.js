@@ -1,66 +1,50 @@
-
 //Getting into promises
 
-const urlTarik='https://api.github.com/search/repositories?q=user:tariqjavid';
+//github url
+const url = "https://api.github.com/search/repositories?q=user:";
 
-const urlVictoria='https://api.github.com/search/repositories?q=user:panivita';
+const body = document.querySelector("body");
 
-const urlCharles='https://api.github.com/search/repositories?q=user:CharlesKimMaina';
+//fetching using function github user name as parameter
 
-//fetching all users
-const promiseTarik= fetch(urlTarik)
+const fetchAll = (userName) =>
+	fetch(url + userName)
+		.then((res) => res.json())
 
-const promiseVictoria= fetch(urlVictoria)
+		.then((result) => result.items);
 
-const promiseCharles= fetch(urlCharles)
+//fetch result for four github acounts
+const allPromises = [
+	fetchAll("tariqjavid"),
+	fetchAll("gebremedhin85"),
+	fetchAll("panivita"),
+	fetchAll("CharlesKimMaina"),
+];
 
-const allPromises=[promiseTarik, promiseVictoria, promiseCharles]
+//rendering to browser
+const renderToBrowser = (repoes) => {
+	const ulUserName = document.createElement("ul");
 
-Promise.all(allPromises)
+	body.appendChild(ulUserName);
 
-    .then(res=>{
+	const liUserName = document.createElement("li");
 
-        console.log(res);
+	liUserName.innerHTML = `${repoes[0].owner.login}'s repositories`;
 
-        const jsonTarik=res[0].json();
+	ulUserName.appendChild(liUserName);
 
-        const jsonVictoria=res[1].json();
+	repoes.forEach((repo) => {
+		console.log(repo);
 
-        const jsonCharles=res[2].json();
+		const ulRepo = document.createElement("ul");
 
-        return Promise.all([jsonTarik, jsonVictoria, jsonCharles])
+		ulRepo.innerHTML = `
+            <li> ${repo.name} : ${repo.url}`;
 
-    })
-        .then(result=>{
+		liUserName.appendChild(ulRepo);
+	});
+};
 
-            console.log(result);
-
-            //rendering result to browser
-            const body=document.querySelector('body');
-
-            result.forEach(users=>{
-
-                            
-                const repoes=users.items;
-
-                repoes.forEach(items=>{
-                    
-                    const div=document.createElement('div');
-
-                    div.innerHTML= `<ul> 
-                            <li> ${items.owner.login}'s repoes
-                                <ul>
-                                    <li>${items.name} : ${items.url}</li>
-                                </ul>
-                            
-                            </li>
-                        </ul> `
-                    
-                     body.appendChild(div);
-
-                })
-
-            })
-            
-                      
-        });
+Promise.all(allPromises).then((results) => {
+	results.forEach((result) => renderToBrowser(result));
+});

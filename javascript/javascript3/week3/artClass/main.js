@@ -1,5 +1,4 @@
-
-// drawing a circle and filling color 
+// drawing a circle and filling color
 const canvas = document.getElementById("myCanvas");
 
 const drawCircle = canvas.getContext("2d");
@@ -10,75 +9,77 @@ drawCircle.arc(200, 200, 40, 0, 2 * Math.PI);
 
 drawCircle.stroke();
 
-drawCircle.fillStyle = 'rgb(300, 200, 100)';
+drawCircle.fillStyle = "rgb(300, 200, 100)";
 
 drawCircle.fill();
 
+//Class creation
+class Circle {
+	constructor(x, y, r, startAngle, endAngle, fillColor) {
+		this.x = x;
 
-//Class creation 
-class Circle{
+		this.y = y;
 
-    constructor(x, y, r, startAngle, endAngle, fillColor){
+		this.r = r;
 
-        this.x=x;
+		this.startAngle = startAngle;
 
-        this.y=y;
+		this.endAngle = endAngle;
 
-        this.r=r;
+		this.fillColor = fillColor;
+	}
 
-        this.startAngle=startAngle;
-        
-        this.endAngle=endAngle;
-        
-        this.fillColor=fillColor;
-    }
+	draw() {
+		const canvas = document.getElementById("myCanvas");
 
+		const drawCircle = canvas.getContext("2d");
 
-    draw(){
-    
-        const canvas = document.getElementById("myCanvas");
+		drawCircle.beginPath();
 
-        const drawCircle = canvas.getContext("2d");
-    
-        drawCircle.beginPath();
-    
-        drawCircle.arc(this.x, this.y, this.r, this.startAngle, this.endAngle, 2 * Math.PI);
-    
-        drawCircle.stroke();
+		drawCircle.arc(
+			this.x,
+			this.y,
+			this.r,
+			this.startAngle,
+			this.endAngle,
+			2 * Math.PI
+		);
 
-        drawCircle.fillStyle = this.fillColor;
-    
-        drawCircle.fill();
+		drawCircle.stroke();
 
-    }
+		drawCircle.fillStyle = this.fillColor;
+
+		drawCircle.fill();
+	}
 }
 
- 
+//getting random values for X, Y, radius and colours using function
 
+function getRandomValue(maxValue) {
+	//maxValue stands for maximum value for radius, X, Y and colour rgb values.
+	const randomNumber = Math.floor(Math.random() * maxValue);
+
+	return randomNumber;
+}
 
 // creating instant new Circle classes every 100ms
- 
 setInterval(() => {
+	const x = getRandomValue(600);
+	const y = getRandomValue(400);
+	const r = getRandomValue(60);
+	const red = getRandomValue(255);
+	const green = getRandomValue(255);
+	const blue = getRandomValue(255);
 
-    //value for x and y random b/n 0 and 400(canvas's max height and max width)
-    const valueX=Math.floor(Math.random()*400);
- 
-    const valueY=Math.floor(Math.random()*400);
+	const class1 = new Circle(
+		x,
+		y,
+		r,
 
-    //random value for radius from 0 til 200
-    const radius=Math.floor(Math.random()*60);
+		0,
+		2 * Math.PI,
+		`rgb(${red}, ${green}, ${blue})`
+	);
 
-    // giving a random value to the rgb values
-    const red=Math.floor(Math.random()*255);
- 
-    const green=Math.floor(Math.random()*255);
- 
-    const blue=Math.floor(Math.random()*255);
-
-    const class1 = new Circle(valueX, valueY, radius, 0, 2 * Math.PI, `rgb(${red}, ${green}, ${blue})`);
- 
-    class1.draw();
- 
+	class1.draw();
 }, 100);
-
- 
