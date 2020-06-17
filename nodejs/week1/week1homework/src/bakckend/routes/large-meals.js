@@ -1,17 +1,13 @@
-function getLargeMeals(){
-    
-    mealArr=require("../data/meals.json");
-  reviewArr=require("../data/reviews.json");
+function getLargeMeals() {
+	const meals = require("../data/reviewed-meals");
 
-  const reviewMeals= mealArr.map((meal)=>{
-      meal.reviews = reviewArr.filter((review) => review.mealId === meal.id);
-      return meal;
-  })
- const largeMeal=reviewMeals.filter((meal) =>meal.maxNumberOfGuests >= 10);
- return largeMeal;
-   
+	const numberOfGuests = 10;
+	const largeMeal = meals.filter(
+		(meal) => meal.maxNumberOfGuests >= numberOfGuests
+	);
+	return largeMeal;
 }
 
 module.exports = (req, res) => {
-    res.json(getLargeMeals());
-}
+	res.json(getLargeMeals());
+};

@@ -1,8 +1,9 @@
-
-const reservation = require("../data/reservations.json");
- 
+function getSingleReservation() {
+	const reservations = require("../data/reservations.json");
+	const randomReservation = Math.floor(Math.random() * reservations.length);
+	return reservations[randomReservation];
+}
 
 module.exports = (req, res) => {
-    //taking the third reservation
-    res.json(reservation[2]);
-}
+	res.json(getSingleReservation());
+};

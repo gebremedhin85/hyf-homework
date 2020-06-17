@@ -1,6 +1,5 @@
-const reservations=require("../data/reservations.json");
-
+const reservations = require("../data/reservations.json");
 
 module.exports = (req, res) => {
-    res.json(reservations);
-}
+	res.json(reservations);
+};

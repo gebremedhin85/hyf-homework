@@ -1,18 +1,12 @@
-function getCheapMeals(){
-    
-    const mealArr=require("../data/meals.json");
-    const reviewArr=require("../data/reviews.json");
+function getCheapMeals() {
+	const meals = require("../data/reviewed-meals");
 
-    const reviewMeals = mealArr.map((meal)=>{
-        meal.reviews = reviewArr.filter((review) => review.mealId === meal.id);
-        return meal;
-    })
-    //assuming cheap meals are with price less than 100 kr
-    const cheapMeals = reviewMeals.filter((meal) =>  meal.price <= 100);
-    
-    return cheapMeals;
-    
+	const averagePriceOfMeal = 100;
+	const cheapMeals = meals.filter((meal) => meal.price <= averagePriceOfMeal);
+
+	return cheapMeals;
 }
+
 module.exports = (req, res) => {
-    res.json(getCheapMeals());
-}
+	res.json(getCheapMeals());
+};
