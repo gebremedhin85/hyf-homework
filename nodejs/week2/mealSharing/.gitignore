@@ -1,0 +1,8 @@
+
+node_modules
+
+src/bakckend/routes/cheap-meals.js
+src/bakckend/routes/large-meals.js
+src/bakckend/routes/meal.js
+src/bakckend/routes/reservation.js
+
