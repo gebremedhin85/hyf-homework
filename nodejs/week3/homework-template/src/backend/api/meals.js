@@ -79,18 +79,16 @@ router.get("/", async (req, res) => {
 			.select()
 			.where("price", "<", maxPriceToNum);
 		res.json(mealsCostLess);
-	}  else if (title) {
+	} else if (title) {
 		const mealsWithTitle = await knex("meals")
 			.select("*")
 			.where("title", "like", `%${title}%`);
 		res.json(mealsWithTitle);
-	}else if (availableReservations === "true") {
+	} else if (availableReservations === "true") {
 		const mealsWithAvailableReservation = await knex("meals")
 			.join("reservations", "meals.id", "=", "reservations.meal_id")
-			.select("meals.id", "meals.title", "meals.max_reservations")
-			.sum("reservations.number_of_guests as sum")
-			.groupBy("meals.id")
-			.having("meals.max_reservations", ">", "sum");
+			.select("meals.id", "meals.title", "meals.max_reservations")			
+			.andHaving("meals.max_reservations", ">", "reservations.number_of_guests");
 
 		res.json(mealsWithAvailableReservation);
 	} else if (createdAfter) {
