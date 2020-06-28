@@ -20,7 +20,6 @@ app.use(express.json());
 
 router.use("/meals", mealsRout);
 router.use("/reservations", reservationsRout);
- 
 
 app.use("/api", router);
 
@@ -28,13 +27,6 @@ app.use("/api", router);
 // Ensures that the client router works on reload aswell.
 // Sends all requests back to index.html where the routing lib takes over
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./../frontend/index.html"), function (
-    err
-  ) {
-    if (err) {
-      res.status(500).send(err);
-    }
-  });
+	res.sendFile(path.join(__dirname, "./../frontend/index.html"));
 });
-
 app.listen(port, () => console.log(`Server listening on port ${port}!`));
