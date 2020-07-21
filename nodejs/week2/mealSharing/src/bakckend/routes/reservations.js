@@ -3,13 +3,13 @@ const router = express.Router();
 const reservations = require("../data/reservations.json");
 
 router.get("/:id", (req, res) => {
-	const reserveId = parseInt(req.params.id);
+	const reserveId = parseFloat(req.params.id);
 	if (!reserveId) {
-		res.send(`Enter an id number`);
+		res.status(400).send("Bud request, id should be a number.");
 	} else {
 		const reservationWithThisId = reservations.find((r) => r.id === reserveId);
 		if (!reservationWithThisId) {
-			res.send(`There is no reservation with this id: ${reserveId}`);
+			res.status(404).send(`404 error. There is no reservation with this id: ${reserveId}`);
 		} else {
 			res.json(reservationWithThisId);
 		}
