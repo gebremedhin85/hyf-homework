@@ -22,20 +22,35 @@ router.post("/", async (req, res) => {
 //to get a meal by id
 router.get("/:id", async (req, res) => {
 	const mealId = parseInt(req.params.id);
-	const meal = await knex("meals").where({ id: mealId });
-	res.json(meal);
+	if (!mealId) res.status(400).send(`Bad request, id should be a number.`);
+	else {
+		const meal = await knex("meals").where({ id: mealId });
+		if (meal.length === 0)
+			res.status(404).send(`Not found, there is no meal with id: ${mealId}.`);
+		else res.json(meal);
+	}
 });
 
 //to put/update a meal with specific id
 router.put("/:id", async (req, res) => {
 	let mealId = parseInt(req.params.id);
-
-	await knex("meals").where({ id: mealId }).update({ title: req.query.title });
+	const mealToUpdate = await knex("meals").where({ id: mealId });
+	if (mealToUpdate.length > 0) {
+		await knex("meals").where({ id: mealId }).update({
+			for_when: req.query.for_when,
+			price: req.query.price,
+		});
+		res.status(200).send(`Meal with id ${mealId} is Updated`);
+	} else res.status(404).send(`Not found. Meal with id ${mealId} not exist`);
 });
 
 router.delete("/:id", async (req, res) => {
 	let mealId = parseInt(req.params.id);
-	await knex("meals").where({ id: mealId }).delete();
+	const mealToDelete = await knex("meals").where({ id: mealId });
+	if (mealToDelete.length > 0) {
+		await knex("meals").where({ id: mealId }).delete();
+		res.send(`Meal with id ${mealId} is deleted`);
+	} else res.status(404).send(`Not found. Meal with id ${mealId} not exist`);
 });
 
 //to get all meals from table meals and
@@ -49,33 +64,33 @@ router.get("/", async (req, res) => {
 		limit,
 	} = req.query;
 
-	let queredMeals = knex("meals");
+	let queriedMeals = knex("meals");
 
 	if (maxPrice) {
 		const maxPriceToNum = parseInt(maxPrice);
-		queredMeals = queredMeals.where("price", "<", maxPriceToNum);
+		queriedMeals = queriedMeals.where("price", "<", maxPriceToNum);
 	}
 	if (title) {
-		queredMeals = queredMeals.where("title", "like", `%${title}%`);
+		queriedMeals = queriedMeals.where("title", "like", `%${title}%`);
 	}
 	if (availableReservations === "true") {
-		queredMeals = queredMeals
+		queriedMeals = queriedMeals
 			.join("reservations", "meals.id", "=", "reservations.meal_id")
 			.where("meals.max_reservations", ">", "reservations.number_of_guests");
 	}
 	if (createdAfter) {
 		const timeCreatedAfter = new Date(createdAfter);
-		queredMeals = queredMeals.where("created_date", ">", timeCreatedAfter);
+		queriedMeals = queriedMeals.where("created_date", ">", timeCreatedAfter);
 	}
 	if (limit) {
 		const limitTo = parseInt(req.query.limit);
-		queredMeals = queredMeals.limit(limitTo);
+		queriedMeals = queriedMeals.limit(limitTo);
 	}
-	const queryOutput = await queredMeals.select("*");
-	if (queryOutput.length === 0 || availableReservations === "false") {
-		res.status(404).send("404 Error. It is not found");
+	const meals = await queriedMeals.select("*");
+	if (meals.length === 0 || availableReservations === "false") {
+		res.status(200).send("No result, empty");
 	}
-	res.json(queryOutput);
+	res.json(meals);
 });
 
 router.use((err, req, res, next) => {
