@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Todo from "./Todo";
-import DatePicker from "react-datepicker";
+import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
 class TodoList extends Component {
@@ -10,7 +10,7 @@ class TodoList extends Component {
 			todoes: [],
 			error: false,
 			todoInput: "",
-			deadlineInput: new Date(),
+			deadlineInput: "",
 		};
 		console.log(this.state.todoes);
 		this.fetchTodo = this.fetchTodo.bind(this);
@@ -61,7 +61,7 @@ class TodoList extends Component {
 			this.setState({
 				todoes: newTodoes,
 				todoInput: "",
-				deadlineInput: new Date(),
+				deadlineInput: "",
 			});
 		} else {
 			alert("Fill the form appropriatly!");
@@ -70,16 +70,23 @@ class TodoList extends Component {
 	}
 
 	editTodo(id, e) {
-		const index = this.state.todoes.findIndex((todo) => todo.id === id);
-		const editedTodo = Object.assign({}, this.state.todoes[index]);
-		editedTodo.description = this.state.todoInput;
-		editedTodo.deadline = this.state.deadlineInput;
-		const newTodoes = Object.assign([], this.state.todoes);
-		newTodoes[index] = editedTodo;
-		this.setState({
-			todoes: newTodoes,
+		this.setState((prevState) => {
+			const updatedTodos = prevState.todoes.map((todo) => {
+				if (todo.id === id) {
+					return {
+						...todo,
+						description: this.state.todoInput,
+						deadline: this.state.deadlineInput,
+					};
+				}
+				return todo;
+			});
+			return {
+				todoes: updatedTodos,
+			};
 		});
 	}
+
 	deleteTodo(index) {
 		let filteredArray = this.state.todoes.filter((item) => item.id !== index);
 		this.setState({ todoes: filteredArray });
@@ -101,18 +108,20 @@ class TodoList extends Component {
 					></input>
 					<br />
 					<label>Deadline</label>
-					<DatePicker
+					<input
+						type="date"
+						placeholder="YYYY-MM-DD"
 						selected={this.state.deadlineInput}
 						onChange={this.handleDeadlineChange}
 					/>
-					<br/>
+					<br />
 					<button type="submit">Add todo</button>
 				</form>
 				<ul>
 					{todoes.length
 						? todoes.map((todo) => (
 								<Todo
-									deadline={todo.deadline}
+									deadline={moment(todo.deadline).format("YYYY-MM-DD")}
 									description={todo.description}
 									key={todo.id}
 									deleteTodo={() => this.deleteTodo(todo.id)}
