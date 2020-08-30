@@ -1,5 +1,8 @@
 banana
 apple
-orange
+mangoes
 pear
 tomato
+strawberries
+avocados
+
