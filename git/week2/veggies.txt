@@ -1,5 +1,8 @@
 banana
 apple
-grapefruits
+mangoes
 pear
 tomato
+strawberries
+git avocados
+
